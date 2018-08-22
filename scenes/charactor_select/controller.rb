@@ -1,6 +1,6 @@
 class Controller
     attr_accessor :up, :down, :left, :right, :click
-    def initinalize
+    def initialize
         @cursor_speed = 5
         set_keybind
     end
@@ -31,4 +31,5 @@ class Controller
         self.left = K_A
         self.right = K_D
         self.click = K_Q
+    end
 end

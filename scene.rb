@@ -5,8 +5,8 @@ class Scene
     @@scene_directors = {}
     #プレイヤー情報
     @@players = {
-        :player1: nil,
-        :player2: nil
+        :player1 => nil,
+        :player2 => nil
     }
 
     # 新しくシーンを追加
