@@ -1,10 +1,15 @@
 class Scene
     # 現在のscene
-   @@current = nil
-   # シーンのハッシュマップ
-   @@scene_directors = {}
+    @@current = nil
+    # シーンのハッシュマップ
+    @@scene_directors = {}
+    #プレイヤー情報
+    @@players = {
+        :player1: nil,
+        :player2: nil
+    }
 
-   # 新しくシーンを追加
+    # 新しくシーンを追加
     def self.add(director_name, director_obj)
         @@scene_directors[director_name] = director_obj
     end
