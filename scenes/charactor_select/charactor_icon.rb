@@ -11,5 +11,9 @@ module CharactorSelect
             self.scale_y = 0.25
             self.draw
         end
+
+        def name
+            @name
+        end
     end
 end

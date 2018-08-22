@@ -29,10 +29,14 @@ module CharactorSelect
             # プレイヤーの生成
             @players = []
             @players << Player.new(0, 400, PLAYER_FINGER_1, CharactorSelect::Controller1.new, :player1)
-            @players << Player.new(600, 400, PLAYER_FINGER_2, CharactorSelect::Controller2.new :player2)
+            @players << Player.new(600, 400, PLAYER_FINGER_2, CharactorSelect::Controller2.new, :player2)
 
             @flashing_flag = true
             @flashing_cnt = 0
+        end
+
+        def self.cards
+            @@cards
         end
 
         def play

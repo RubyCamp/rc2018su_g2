@@ -18,7 +18,7 @@ class Scene
         @@current = director_name.to_sym
     end
 
-    def self.players=(key, value)
+    def self.update_player(key, value)
         @@players[key.to_sym] = value
     end
 

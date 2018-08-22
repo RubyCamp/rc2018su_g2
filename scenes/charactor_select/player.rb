@@ -15,9 +15,13 @@ module CharactorSelect
             select_charactor if @controller.push_select_key?
         end
 
+        private
+
         # キャラクターの選択
         def select_charactor
-
+            CharactorSelect::Director.cards.each do |card|
+                Scene.update_player(@name, card.name) if self === card
+            end
         end
     end
 end
