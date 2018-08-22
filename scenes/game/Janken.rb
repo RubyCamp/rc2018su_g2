@@ -13,21 +13,23 @@ class Janken
 	end
 
 	def run
+		# 
+		judge
+		@p1.play
+		@p2.play
+		
 		# 時間取得
 		@t = Time.now
 		p @t # 確認用
 
 		# 制限時間取得
-      	@limit ||= @t + 3
-		p @limit　# 確認用
+      	@limit ||= @t + 5
+		p @limit # 確認用
 
+		# 時間制限にかかる終了条件
 		if @t > @limit
-			@end = true; p 'じゃんけん終了' 
-
-		# 
-		@p1.play
-		@p2.play
-		judge
+			@end = true
+		end 
 	end
 
 	def judge

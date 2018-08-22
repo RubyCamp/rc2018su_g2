@@ -5,7 +5,7 @@ module Title
 
     def play
       Window.draw(0, 0, BACKGROUND)
-      p 'タイトル'
+      p "タイトル"
       Scene.current = :game if Input.key_push?(K_SPACE)
     end
   end

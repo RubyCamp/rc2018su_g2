@@ -17,7 +17,6 @@ module Game
 
         # どっちかがHPゼロになったらエンディングへ
         @ending = true # ここでは、エンディングに直行
-        p 'エンディングへ'
         if @ending == true
           Scene.current = :ending if Input.key_push?(K_SPACE)
         end
