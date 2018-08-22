@@ -22,14 +22,14 @@ module CharactorSelect
             @next_font = Font.new(40)
 
             #キャラクターカードの生成
-            @cards = []
-            @cards << CharactorSelect::CharactorIcon.new(-100, -150, RUBY_ICON, "ruby")
-            @cards << CharactorSelect::CharactorIcon.new(300, -150, PYTHON_ICON, "python")
+            @@cards = []
+            @@cards << CharactorSelect::CharactorIcon.new(-100, -150, RUBY_ICON, "ruby")
+            @@cards << CharactorSelect::CharactorIcon.new(300, -150, PYTHON_ICON, "python")
 		
             # プレイヤーの生成
             @players = []
-            @players << Player.new(0, 400, PLAYER_FINGER_1, CharactorSelect::Controller1.new)
-            @players << Player.new(600, 400, PLAYER_FINGER_2, CharactorSelect::Controller2.new)
+            @players << Player.new(0, 400, PLAYER_FINGER_1, CharactorSelect::Controller1.new, :player1)
+            @players << Player.new(600, 400, PLAYER_FINGER_2, CharactorSelect::Controller2.new :player2)
 
             @flashing_flag = true
             @flashing_cnt = 0
@@ -43,7 +43,7 @@ module CharactorSelect
             @flashing_flag = !(@flashing_flag) if @flashing_cnt == 0
             Window.draw_font(200, 500, "push space key to start", @next_font) if @flashing_flag && Scene.players(:player1) != nil && Scene.players(:player2) != nil
 
-            Sprite.update(@cards)
+            Sprite.update(@@cards)
             Sprite.update(@players)
             
             #スペースキーでゲーム開始

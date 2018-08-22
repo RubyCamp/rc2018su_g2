@@ -1,7 +1,8 @@
 module CharactorSelect
     class Player < Sprite
-        def initialize(x, y, image, controller)
+        def initialize(x, y, image, controller, name)
             @controller = controller
+            @name = name.to_sym
             super
         end
 
