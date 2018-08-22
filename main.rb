@@ -8,6 +8,8 @@ Window.height = 600
 
 Scene.add(:title, Title::Director.new)
 Scene.add(:charactor_select, CharactorSelect::Director.new)
+sound = Sound.new('sound/select_charactor.wav')
+sound.play
 
 Scene.current = :title
 

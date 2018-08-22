@@ -15,12 +15,12 @@ module CharactorSelect
         # キャクターカード用アイコン
         RUBY_ICON = Image.load('images/card_ruby.png')
         PYTHON_ICON = Image.load('images/card_python.png')
-        PERL_ICON= Image.load('images/card_perl.png')
+        PERL_ICON = Image.load('images/card_perl.png')
 
         def initialize
             #フォントの生成
-            @title_font = Font.new(75)
-            @next_font = Font.new(40)
+            @title_font = Font.new(75, font_name="ＭＳ ゴシック")
+            @next_font = Font.new(40, font_name="ＭＳ ゴシック")
             @selected_font = Font.new(50, font_name="ＭＳ ゴシック")
 
             #キャラクターカードの生成
@@ -34,8 +34,10 @@ module CharactorSelect
             @players << Player.new(0, 400, PLAYER_FINGER_1, CharactorSelect::Controller1.new, :player1)
             @players << Player.new(600, 400, PLAYER_FINGER_2, CharactorSelect::Controller2.new, :player2)
 
-            @flashing_flag = true
-            @flashing_cnt = 0
+            @font_alpha = -1
+            @alpha_flag = true
+
+            @sound = Sound.new('sound/to_game.wav')
         end
 
         def self.cards
@@ -43,21 +45,35 @@ module CharactorSelect
         end
 
         def play
-            Window.draw_font(125, 20, "キャラクター選択", @title_font)
+            Window.draw_font(95, 20, "キャラクター選択", @title_font)
             
-            #0.5秒おきに"push space to start"を点滅させる
-            @flashing_cnt = ((@flashing_cnt + 1) % 30)
-            @flashing_flag = !(@flashing_flag) if @flashing_cnt == 0
-            Window.draw_font(200, 500, "push space key to start", @next_font) if @flashing_flag && Scene.players(:player1) != nil && Scene.players(:player2) != nil
+            #両プレイヤーがキャラクター選択時、"push space to start"を点滅させる
+            if @alpha_flag
+                @font_alpha = @font_alpha + 8
+                @alpha_flag = false if @font_alpha == 255
+            else
+                @font_alpha = @font_alpha - 8
+                if @font_alpha == -1
+                    @alpha_flag = true
+                    @font_alpha += 1
+                end
+            end
+            Window.draw_font(165, 550, "PUSH SPACE KEY TO START", @next_font, option={:alpha => @font_alpha}) if Scene.players(:player1) != nil && Scene.players(:player2) != nil
+            @font_alpha -= 1 if @font_alpha == 0
 
-            list = "<%6s>P1 VS P2<%-6s>" % [Scene.players(:player1), Scene.players(:player2)]
-            Window.draw_font(95, 400, list, @selected_font)
+            player1 = Scene.players(:player1).to_s.center(6)
+            player2 = Scene.players(:player2).to_s.center(6)
+            list = "<%s>P1 VS P2<%s>" % [player1, player2]
+            Window.draw_font(95, 450, list, @selected_font)
 
             Sprite.update(@@cards)
             Sprite.update(@players)
             
             #スペースキーでゲーム開始
-            Scene.current = :game if Scene.players(:player1) != nil && Scene.players(:player2) != nil && Input.key_push?(K_SPACE)
+            if Scene.players(:player1) != nil && Scene.players(:player2) != nil && Input.key_push?(K_SPACE)
+                @sound.play
+                Scene.current = :game
+            end
         end
     end
 end

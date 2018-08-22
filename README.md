@@ -31,5 +31,6 @@
 - 画像
     - [ICOOON MONO](http://icooon-mono.com/)
     - [イラストAC](https://premium.ac-illust.com/)
+    - [いらすとや](https://www.irasutoya.com/)
 - 音楽
-    - 
+    - [くらげ工匠](http://www.kurage-kosho.info/)
