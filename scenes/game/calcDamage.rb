@@ -1,6 +1,7 @@
-require_relative 'character'
-require_relative 'ruby'
-require_relative 'python'
+require_relative './character/character'
+require_relative './character/ruby'
+require_relative './character/perl'
+require_relative './character/python'
 
 p1 = Ruby.new("Ruby", 100, 10, "正常")
 p2 = Python.new("Python", 100, 10, "正常")
