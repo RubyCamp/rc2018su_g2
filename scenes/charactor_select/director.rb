@@ -15,6 +15,7 @@ module CharactorSelect
         # キャクターカード用アイコン
         RUBY_ICON = Image.load('images/card_ruby.png')
         PYTHON_ICON = Image.load('images/card_python.png')
+        PERL_ICON= Image.load('images/card_perl.png')
 
         def initialize
             #フォントの生成
@@ -25,7 +26,8 @@ module CharactorSelect
             #キャラクターカードの生成
             @@cards = []
             @@cards << CharactorSelect::CharactorIcon.new(-100, -150, RUBY_ICON, "Ruby")
-            @@cards << CharactorSelect::CharactorIcon.new(300, -150, PYTHON_ICON, "Python")
+            @@cards << CharactorSelect::CharactorIcon.new(100, -150, PYTHON_ICON, "Python")
+            @@cards << CharactorSelect::CharactorIcon.new(300, -150, PERL_ICON, "Perl")
 		
             # プレイヤーの生成
             @players = []
