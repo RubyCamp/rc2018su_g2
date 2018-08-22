@@ -1,6 +1,6 @@
 module CharactorSelect
     class Player < Sprite
-        @@sound = Sound.new('sound/select_charactor.wav')
+        @@sound = Sound.new('sound/select/select_charactor.wav')
 
         def initialize(x, y, image, controller, name)
             @controller = controller

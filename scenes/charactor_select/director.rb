@@ -9,13 +9,13 @@ module CharactorSelect
 		attr_accessor :charactors, :players
 
         # キャクター選択用アイコン
-        PLAYER_FINGER_1 = Image.load('images/player_finger_1.png')
-        PLAYER_FINGER_2 = Image.load('images/player_finger_2.png')
+        PLAYER_FINGER_1 = Image.load('images/select/player_finger_1.png')
+        PLAYER_FINGER_2 = Image.load('images/select/player_finger_2.png')
 
         # キャクターカード用アイコン
-        RUBY_ICON = Image.load('images/card_ruby.png')
-        PYTHON_ICON = Image.load('images/card_python.png')
-        PERL_ICON = Image.load('images/card_perl.png')
+        RUBY_ICON = Image.load('images/select/card_ruby.png')
+        PYTHON_ICON = Image.load('images/select/card_python.png')
+        PERL_ICON = Image.load('images/select/card_perl.png')
 
         def initialize
             #フォントの生成
@@ -37,7 +37,10 @@ module CharactorSelect
             @font_alpha = -1
             @alpha_flag = true
 
-            @sound = Sound.new('sound/to_game.wav')
+            @sound = Sound.new('sound/select/to_game.wav')
+            @bgm = Sound.new('sound/select/select_bgm.wav')
+            @bgm.loop_count = 100
+            @bgm.play
         end
 
         def self.cards
@@ -72,6 +75,7 @@ module CharactorSelect
             #スペースキーでゲーム開始
             if Scene.players(:player1) != nil && Scene.players(:player2) != nil && Input.key_push?(K_SPACE)
                 @sound.play
+                @bgm.stop
                 Scene.current = :game
             end
         end
