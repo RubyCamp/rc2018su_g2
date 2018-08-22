@@ -12,28 +12,42 @@ module CharactorSelect
         PLAYER_FINGER_1 = Image.load('images/player_finger_1.png')
         PLAYER_FINGER_2 = Image.load('images/player_finger_2.png')
 
-        # キャクター用アイコン
+        # キャクターカード用アイコン
         RUBY_ICON = Image.load('images/card_ruby.png')
         PYTHON_ICON = Image.load('images/card_python.png')
 
         def initialize
-            @font = Font.new(75)
-            @charactors = []
-            @charactors << CharactorIcon.new(-100, -150, RUBY_ICON, "ruby")
-            @charactors << CharactorIcon.new(300, -150, PYTHON_ICON, "python")
+            #フォントの生成
+            @title_font = Font.new(75)
+            @next_font = Font.new(40)
+
+            #キャラクターカードの生成
+            @cards = []
+            @cards << CharactorIcon.new(-100, -150, RUBY_ICON, "ruby")
+            @cards << CharactorIcon.new(300, -150, PYTHON_ICON, "python")
 		
             # プレイヤーの生成
             @players = []
             @players << Player.new(0, 400, PLAYER_FINGER_1, Controller1.new)
             @players << Player.new(600, 400, PLAYER_FINGER_2, Controller2.new)
 
-
+            @flashing_flag = true
+            @flashing_cnt = 0
         end
 
         def play
-            Window.draw_font(125, 20, "キャラクター選択", @font)
-            Sprite.update(@charactors)
+            Window.draw_font(125, 20, "キャラクター選択", @title_font)
+            
+            #0.5秒おきに"push space to start"を点滅させる
+            @flashing_cnt = ((@flashing_cnt + 1) % 30)
+            @flashing_flag = !(@flashing_flag) if @flashing_cnt == 0
+            Window.draw_font(200, 500, "push space key to start", @next_font) if @flashing_flag
+
+            Sprite.update(@cards)
             Sprite.update(@players)
+            
+            #スペースキーでゲーム開始
+            Scene.current = :game if Scene.players(:player1) != nil && Scene.players(:player2) != nil && Input.key_push?(K_SPACE)
         end
     end
 end
