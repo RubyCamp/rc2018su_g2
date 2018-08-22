@@ -2,30 +2,54 @@ require_relative "player1_janken"
 require_relative 'player2_janken'
 
 class Janken
-	attr_accessor :var, :p1, :p2 ,:winner ,:winner_hand
 	def initialize
-		self.p1 = Player1_janken.new
-		self.p2 = Player2_janken.new
-		self.var = 0
-		self.winner = 0
-		self.winner_hand = 0
+		@p1 = Player1_janken.new('Ruby')
+		@p2 = Player2_janken.new('Python')
+		@var = 0
+		@winner = 0
+		@winner_hand = 0
+		@cnt = 0
+		@end = false
+	end
+
+	def run
+		# 時間取得
+		@t = Time.now
+		p @t # 確認用
+
+		# 制限時間取得
+      	@limit ||= @t + 3
+		p @limit　# 確認用
+
+		if @t > @limit
+			@end = true; p 'じゃんけん終了' 
+
+		# 
+		@p1.play
+		@p2.play
+		judge
 	end
 
 	def judge
-		self.var = self.p1.push_key - self.p2.push_key
-		var = self.var
-		if self.p1.push_key != 0 && self.p2.push_key != 0
+		@var = @p1.push_key - @p2.push_key
+		var = @var
+		if @p1.push_key != 0 && @p2.push_key != 0
+			@end = true
 			if var == -1 || var == 2
 				puts "P1の勝ちです"
-				self.winner = 1
-				self.winner_hand = self.p1.push_key
+				@winner = 1
+				@winner_hand = @p1.push_key
 			elsif var == 1 || var == -2
 				puts "P2の勝ちです"
-				self.winner = 2
-				self.winner_hand = self.p2.push_key
+				@winner = 2
+				@winner_hand = @p2.push_key
 			elsif var == 0
 				puts "あいこです"
 			end
 		end
+	end
+
+	def end?
+		@end
 	end
 end

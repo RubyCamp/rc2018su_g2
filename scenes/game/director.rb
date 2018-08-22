@@ -6,19 +6,24 @@ require_relative 'player2_janken'
 
 module Game
   class Director
-    attr_accessor :p1, :p2, :result
     def initialize
-      self.p1 = Player1_janken.new
-      self.p2 = Player2_janken.new
-      self.result = Janken.new
+      @janken = Janken.new
+      @ending = false
     end
 
     def play
-      self.p1.play
-      p self.p1.push_key
-      self.p2.play
-      p self.p2.push_key
-      self.result.judge
+      if @janken.end?
+        # 
+
+        # どっちかがHPゼロになったらエンディングへ
+        @ending = true # ここでは、エンディングに直行
+        p 'エンディングへ'
+        if @ending == true
+          Scene.current = :ending if Input.key_push?(K_SPACE)
+        end
+      else
+        @janken.run
+      end
     end
   end
 end

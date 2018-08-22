@@ -7,9 +7,9 @@ require_relative 'scenes/ending/director'
 Window.width = 800
 Window.height = 600
 
-#Scene.add(:title, Title::Director.new)
+Scene.add(:title, Title::Director.new)
 Scene.add(:game, Game::Director.new)
-#Scene.add(:ending, Ending::Director.new)
+Scene.add(:ending, Ending::Director.new)
 
 Scene.current = :game
 

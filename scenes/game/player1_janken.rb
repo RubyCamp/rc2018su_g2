@@ -1,7 +1,7 @@
 require_relative "player_janken"
 
-
 class Player1_janken < Player
+  private
 	def keys #hash
     {
       gu:K_A, #カンマ忘れない
