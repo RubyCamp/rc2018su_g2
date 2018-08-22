@@ -50,8 +50,8 @@ module CharactorSelect
             @flashing_flag = !(@flashing_flag) if @flashing_cnt == 0
             Window.draw_font(200, 500, "push space key to start", @next_font) if @flashing_flag && Scene.players(:player1) != nil && Scene.players(:player2) != nil
 
-            list = "P1: %-6s VS P2: %-6s" % [Scene.players(:player1), Scene.players(:player2)]
-            Window.draw_font(75, 400, list, @selected_font)
+            list = "<%6s>P1 VS P2<%-6s>" % [Scene.players(:player1), Scene.players(:player2)]
+            Window.draw_font(95, 400, list, @selected_font)
 
             Sprite.update(@@cards)
             Sprite.update(@players)
