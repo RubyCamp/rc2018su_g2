@@ -1,9 +1,9 @@
 class Player < Sprite
   def initialize(*args)
-    super(*args)
-		@gu = Image.load('img/gu.png')
-		@ti = Image.load('img/ti.png')
-		@pa = Image.load('img/pa.png')
+		super(*args)
+		@gu = Image.load('images/gu.png')
+		@ti = Image.load('images/ti.png')
+		@pa = Image.load('images/pa.png')
 		@i = 0
   end
 

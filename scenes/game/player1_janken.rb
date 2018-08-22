@@ -1,5 +1,6 @@
 require_relative "player_janken"
 
+
 class Player1_janken < Player
 	def keys #hash
     {
