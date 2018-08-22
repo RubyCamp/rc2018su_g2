@@ -1,8 +1,8 @@
 class Player < Sprite
   def initialize(selectedCharacter = '')
-		@gu = Image.load('images/gu.png')
-		@ti = Image.load('images/ti.png')
-		@pa = Image.load('images/pa.png')
+		@gu = Image.load('images/game/gu.png')
+		@ti = Image.load('images/game/ti.png')
+		@pa = Image.load('images/game/pa.png')
 		@i = 0
 		@chara = selectCharacter(selectedCharacter) # 入力:選ばれたキャラの文字情報. 代入: Characterクラス.
   end
