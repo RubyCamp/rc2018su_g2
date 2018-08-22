@@ -20,11 +20,12 @@ module CharactorSelect
             #フォントの生成
             @title_font = Font.new(75)
             @next_font = Font.new(40)
+            @selected_font = Font.new(50, font_name="ＭＳ ゴシック")
 
             #キャラクターカードの生成
             @@cards = []
-            @@cards << CharactorSelect::CharactorIcon.new(-100, -150, RUBY_ICON, "ruby")
-            @@cards << CharactorSelect::CharactorIcon.new(300, -150, PYTHON_ICON, "python")
+            @@cards << CharactorSelect::CharactorIcon.new(-100, -150, RUBY_ICON, "Ruby")
+            @@cards << CharactorSelect::CharactorIcon.new(300, -150, PYTHON_ICON, "Python")
 		
             # プレイヤーの生成
             @players = []
@@ -46,6 +47,9 @@ module CharactorSelect
             @flashing_cnt = ((@flashing_cnt + 1) % 30)
             @flashing_flag = !(@flashing_flag) if @flashing_cnt == 0
             Window.draw_font(200, 500, "push space key to start", @next_font) if @flashing_flag && Scene.players(:player1) != nil && Scene.players(:player2) != nil
+
+            list = "P1: %-6s VS P2: %-6s" % [Scene.players(:player1), Scene.players(:player2)]
+            Window.draw_font(75, 400, list, @selected_font)
 
             Sprite.update(@@cards)
             Sprite.update(@players)
