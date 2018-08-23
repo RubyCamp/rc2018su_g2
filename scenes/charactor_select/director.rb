@@ -22,6 +22,7 @@ module CharactorSelect
             @title_font = Font.new(75, font_name="ＭＳ ゴシック")
             @next_font = Font.new(40, font_name="ＭＳ ゴシック")
             @selected_font = Font.new(50, font_name="ＭＳ ゴシック")
+            @selected_font_y = 1200
 
             #キャラクターカードの生成
             @@cards = []
@@ -71,7 +72,8 @@ module CharactorSelect
             player1 = Scene.players(:player1).to_s.center(6)
             player2 = Scene.players(:player2).to_s.center(6)
             list = "<%s>P1 VS P2<%s>" % [player1, player2]
-            Window.draw_font(95, 450, list, @selected_font)
+            @selected_font_y -= 5 if 450 <= @selected_font_y
+            Window.draw_font(95, @selected_font_y, list, @selected_font)
 
             Sprite.update(@@cards)
             Sprite.update(@players)
