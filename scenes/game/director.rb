@@ -7,11 +7,13 @@ require_relative 'character/character'
 require_relative 'character/perl'
 require_relative 'character/ruby'
 require_relative 'character/python'
+require_relative 'counter'
 
 module Game
   class Director
     BACKGROUND = Image.load('images/game/jungle.jpg')
     def initialize
+      @counter = Counter.new
       @janken = Janken.new
       @ending = false
       @cnt = 0
@@ -19,6 +21,7 @@ module Game
 
     def play
       Window.draw(0, 0, BACKGROUND)
+      @counter.showCnt
       if @janken.end?
         # 終了条件満たしていても、結果は表示
         @janken.showHands
