@@ -29,10 +29,10 @@
 # 使用素材
 ゲーム内で使用している素材のダウンロード元です。
 - 画像
-    - [ICOOON MONO](http://icooon-mono.com/){:target="_blank"}
-    - [写真AC](https://www.photo-ac.com/){:target="_blank"}
-    - [イラストAC](https://premium.ac-illust.com/){:target="_blank"}
-    - [いらすとや](https://www.irasutoya.com/){:target="_blank"}
-    - [5000兆円ジェネレータ](https://rare25.github.io/5000choyen/){:target="_blank"}
+    - [ICOOON MONO](http://icooon-mono.com/)
+    - [写真AC](https://www.photo-ac.com/)
+    - [イラストAC](https://premium.ac-illust.com/)
+    - [いらすとや](https://www.irasutoya.com/)
+    - [5000兆円ジェネレータ](https://rare25.github.io/5000choyen/)
 - 音楽
-    - [くらげ工匠](http://www.kurage-kosho.info/){:target="_blank"}
+    - [くらげ工匠](http://www.kurage-kosho.info/)
