@@ -2,14 +2,13 @@ require_relative "player_janken"
 
 class Player2_janken < Player #classの名前を持たせる
 	attr_reader :chara, :atk, :c_gu, :c_ti, :c_pa
-	attr_accessor :hp
+	attr_accessor :hp, :hitpoint
 	def initialize(selectedCharacter =p2Chara)
 		@gu = Image.load('images/game/gu.png')
 		@ti = Image.load('images/game/ti.png')
 		@pa = Image.load('images/game/pa.png')
 		@i = 0
 		@chara = nil
-
 		#p selectedCharacter
 		select(selectedCharacter)
 		@hp = @chara.hp
@@ -17,7 +16,7 @@ class Player2_janken < Player #classの名前を持たせる
     	@c_gu = @chara.gu
     	@c_ti = @chara.ti
 		@c_pa = @chara.pa
-		
+		@hitpoint = HitPoint.new(400, 10, @chara.hp, 'right')		
 		@charaImage = Image.load('images/game/'+@chara.name+'.png')
   	end
 

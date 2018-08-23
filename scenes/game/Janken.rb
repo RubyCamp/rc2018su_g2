@@ -48,6 +48,7 @@ class Janken # 1回ごとのじゃんけんの対戦を扱うクラス
 		#if @limit-@t >= 0
 		#	p (@limit-@t)
 		#end
+		showHPBar
 		
 		# 勝利判定
 		judge
@@ -89,6 +90,11 @@ class Janken # 1回ごとのじゃんけんの対戦を扱うクラス
 	def showChara
 		@p1.showChara
 		@p2.showChara
+	end
+
+	def showHPBar
+		@p1.hitpoint.play
+		@p2.hitpoint.play
 	end
 
 	def judge
@@ -151,6 +157,7 @@ class Janken # 1回ごとのじゃんけんの対戦を扱うクラス
 		p @p1.hp
 		p "Player2:"
 		p @p2.hp
+		dmg = 0
 		if winner == 1 #p1が勝利なら
 			if winner_hand == 1 # グーなら
 				dmg = @p1.c_gu[0] * @p1.atk
@@ -165,6 +172,8 @@ class Janken # 1回ごとのじゃんけんの対戦を扱うクラス
 			p "p2"
 			p @p2.hp
 
+			@p2.hitpoint.damage(dmg)
+
 		elsif winner == 2 #p2が勝利なら
 			if winner_hand == 1 # グーなら
 				dmg = @p2.c_gu[0] * @p2.atk
@@ -178,6 +187,8 @@ class Janken # 1回ごとのじゃんけんの対戦を扱うクラス
 			end
 			p "p1"
 			p @p1.hp
+
+			@p1.hitpoint.damage(dmg)
 		end
 	end
 

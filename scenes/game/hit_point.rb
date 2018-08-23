@@ -1,11 +1,12 @@
 class HitPoint
+    attr_accessor 
     def initialize(x, y, hp, direction)
         @direction = direction
         @green_bar = Sprite.new(x, y, Image.new(100, 10, C_GREEN))
         if direction == 'right'
-            @red_bar = Sprite.new(x + 100, y, Image.new(0, 10, C_RED))
+            @red_bar = Sprite.new(x + 100, y, Image.new(1, 10, C_RED))
         else
-            @red_bar = Sprite.new(x, y, Image.new(0, 10, C_RED))
+            @red_bar = Sprite.new(x, y, Image.new(1, 10, C_RED))
         end
 
         @max_hp = hp
@@ -13,7 +14,7 @@ class HitPoint
 
         @next_bar_len = 100
         @curr_bar_len = 100
-        super(x, y, @bar)
+        #super(x, y, @bar)
     end
 
     def damage(damage)
@@ -36,7 +37,7 @@ class HitPoint
     end
 
     def play
-        if 0 < @red_bar.image.x
+        if 1 < @red_bar.image.x
             @red_bar.image.x -= 1
             if @direction == 'left'
                 @red_bar.x += 1

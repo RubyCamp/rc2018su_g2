@@ -1,4 +1,5 @@
 require 'dxruby'
+require_relative "hit_point"
 
 class Player < Sprite
   def initialize
