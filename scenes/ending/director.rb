@@ -1,3 +1,10 @@
+require 'dxruby'
+require_relative 'scene'
+require_relative 'scenes/title/director'
+require_relative 'scenes/charactor_select/director'
+require_relative 'scenes/game/director'
+require_relative 'scenes/ending/director'
+
 module Ending
   class Director
     BACKGROUND = Image.load('images/ending/mountain2_re.jpg')
@@ -17,7 +24,13 @@ module Ending
       #winner = ...
       #img = @player_images[winner]
       if Input.key_push?(K_C) then
-        Scene.current = :title #continue
+        #Cを押すとタイトル画面に遷移
+        #その際に初期化（新たにシーンを作成）
+        Scene.add(:title, Title::Director.new)
+        Scene.add(:charactor_select, CharactorSelect::Director.new)
+        Scene.add(:game, Game::Director.new)
+        Scene.add(:ending, Ending::Director.new)
+        Scene.current = :title
       end
     end
 
