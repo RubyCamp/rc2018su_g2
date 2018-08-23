@@ -27,6 +27,15 @@ module Game
         # どっちかがHPゼロになったらエンディングへ
         if @janken.p1.hp <= 0 || @janken.p2.hp <= 0
           @ending = true
+         
+          if @janken.winner == 1
+            Scene.update_winner(:chara, @janken.p1.chara.name)
+            Scene.update_winner(:winner, "Player1")
+          elsif @janken.winner == 2
+            Scene.update_winner(:chara, @janken.p2.chara.name)
+            Scene.update_winner(:winner, "Player1") 
+          end
+
           Scene.current = :ending if Input.key_push?(K_SPACE)
         #else
         #  play # 終わりじゃなければ、第2回戦、第3回戦...へ。

@@ -7,6 +7,11 @@ class Scene
     :player2 => nil
   }
 
+  @@winner = {
+    :winner => nil,
+    :chara => nil
+  }
+
   def self.add(director_name, director_obj)
     @@scene_directors[director_name.to_sym] = director_obj
   end
@@ -21,6 +26,15 @@ class Scene
 
   def self.players(key)
       @@players[key.to_sym]
+  end
+
+  # winner情報
+  def self.update_winner(key, value)
+    @@winner[key.to_sym] = value
+  end
+
+  def self.winner(key)
+    @@winner[key.to_sym]
   end
 
   # 現在のシーンを実行

@@ -2,7 +2,7 @@ require_relative "player1_janken"
 require_relative 'player2_janken'
 
 class Janken # 1回ごとのじゃんけんの対戦を扱うクラス
-	attr_reader :p1, :p2
+	attr_reader :p1, :p2, :winner
 	attr_accessor :end
 	def initialize # ここで、キャラ選択画面シーンから、選択したキャラの情報が入力される
 		@p1 = Player1_janken.new(Scene.players(:player1)) # ここでは、P1がRuby選択されたと仮定
@@ -51,7 +51,7 @@ class Janken # 1回ごとのじゃんけんの対戦を扱うクラス
 		# 表示
 		showChara
 		#showHands
-		if @p1.push_key != 0 && @p2.push_key == 0
+		if @p1.push_key != 0 && @p2.push_key != 0
 			showHands
 			showChara
 		end
@@ -119,6 +119,7 @@ class Janken # 1回ごとのじゃんけんの対戦を扱うクラス
 			if @p1.push_key != 0 && @p2.push_key == 0
 				@winner = 1
 				@winner_hand = @p1.push_key
+				currentHP
 			elsif @p1.push_key == 0 && @p2.push_key != 0
 				@winner = 2
 				@winner_hand = @p2.push_key

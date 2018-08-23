@@ -21,7 +21,8 @@ module Ending
     def play
       if @cnt == false
         @cnt = true
-        p "エンディング"
+        p Scene.winner(:chara)
+        p Scene.winner(:winner)
       end
 
       Window.draw(0, 0, BACKGROUND)
