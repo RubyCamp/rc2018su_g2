@@ -9,8 +9,8 @@ module CharactorSelect
         end
 
         def update
-            self.x += @controller.x
-            self.y += @controller.y
+            self.x += @controller.x if -100 < self.x + @controller.x && self.x + @controller.x < 700
+            self.y += @controller.y if -100 < self.y + @controller.y && self.y + @controller.y < 500
             self.scale_x = 0.25
             self.scale_y = 0.25
             # self.angle = 360 - 45
