@@ -11,22 +11,20 @@ class Scene
     @@scene_directors[director_name.to_sym] = director_obj
   end
 
-  def self.remove(director_name)
-    @@scene_directors.delete(director_name.to_sym)
-    @@current = nil if @@current == director_name.to_sym
-  end
-
   def self.current=(director_name)
-    raise ERRORS[:director_not_found] unless @@scene_directors.has_key?(director_name.to_sym)
     @@current = director_name.to_sym
   end
 
-  def self.[](director_name)
-    @@scene_directors[director_name.to_sym]
+  def self.update_player(key, value)
+      @@players[key.to_sym] = value
   end
 
+  def self.players(key)
+      @@players[key.to_sym]
+  end
+
+  # 現在のシーンを実行
   def self.play
-    raise ERRORS[:no_current] unless @@current
-    @@scene_directors[@@current].play
+      @@scene_directors[@@current].play
   end
 end

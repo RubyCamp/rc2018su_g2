@@ -32,10 +32,6 @@ class Character
         print @ti[0],", ",@ti[1],"\n"
         print @pa[0],", ",@pa[1],"\n"
     end
-
-    def returnMaxHP
-        @hp
-    end
 end
 
 #ruby = Character.new("Ruby", 100, 10)

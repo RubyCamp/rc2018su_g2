@@ -1,18 +1,44 @@
+#require 'dxruby'
+#require_relative '../../scene'
+#require_relative '../scenes/title/director'
+#require_relative '../scenes/charactor_select/director'
+#require_relative '../scenes/game/director'
+#require_relative '../scenes/ending/director'
+
 module Ending
   class Director
-    #BACKGROUND = Image.load('images/background_ending.png')
-    #BGM = Sound.new('sound/bgm_ending.wav')
+    BACKGROUND = Image.load('images/ending/mountain2_re.jpg')
+    #BGM = Sound.new('') #set BGM
+
     def initialize
-      @ending = false
+      #@player_images = {
+      #   'player1' => Image.load(''),
+      #   'player2' => Image.load('')
+      #}
     end
 
     def play
-      #Window.draw(0, 0, BACKGROUND)
-      if @ending == false
-        @ending = true
-        print "エンディング\n"
+      Window.draw(0, 0, BACKGROUND)
+
+      #drawing winner's illust
+      #winner = ...
+      #img = @player_images[winner]
+      if Input.key_push?(K_C) then
+        #Cを押すとタイトル画面に遷移
+        #その際に初期化（新たにシーンを作成）
+        Scene.update_player(:player1, nil)
+        Scene.update_player(:player2, nil)
+        Scene.add(:title, Title::Director.new)
+        Scene.add(:charactor_select, CharactorSelect::Director.new)
+        Scene.add(:game, Game::Director.new)
+        Scene.add(:ending, Ending::Director.new)
+        Scene.current = :title
       end
-      #Scene.current = :game if Input.key_push?(K_SPACE)
     end
+
+    #def change_bgm
+      #Scene[:title].class::BGM.stop
+      #BGM.play
+    #end
   end
 end
