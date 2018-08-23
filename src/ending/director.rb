@@ -2,7 +2,7 @@
 
 module Ending
   class Director
-    BACKGROUND = Image.load('winner.jpg') #set background
+    BACKGROUND = Image.load('mountain2.jpg') #set background
     BGM = Sound.new('') #set BGM
 
     def initialize
