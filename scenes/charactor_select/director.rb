@@ -66,7 +66,7 @@ module CharactorSelect
                     @font_alpha += 1
                 end
             end
-            Window.draw_font(165, 525, "PUSH SPACE KEY TO START", @next_font, option={:alpha => @font_alpha}) if Scene.players(:player1) != nil && Scene.players(:player2) != nil
+            Window.draw_font(165, 525, "PUSH SPACE KEY TO START", @next_font, option={:color => [@font_alpha, 255, 255, 0]}) if Scene.players(:player1) != nil && Scene.players(:player2) != nil
             @font_alpha -= 1 if @font_alpha == 0
 
             player1 = Scene.players(:player1).to_s.center(6)
