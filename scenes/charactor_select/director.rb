@@ -86,6 +86,8 @@ module CharactorSelect
                 #p Scene.players(:player2)
                 Scene.add(:game, Game::Director.new)
                 Scene.current = :game
+                Scene.add(:show_charactor, ShowCharactor::Director.new)
+                Scene.current = :show_charactor
             end
         end
     end

@@ -2,6 +2,7 @@ require 'dxruby'
 require_relative 'scene'
 require_relative 'scenes/title/director'
 require_relative 'scenes/charactor_select/director'
+require_relative 'scenes/show_charactor/director'
 require_relative 'scenes/game/director'
 require_relative 'scenes/ending/director'
 
