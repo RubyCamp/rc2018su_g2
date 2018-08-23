@@ -23,9 +23,9 @@ class HitPoint
 
         @next_bar_len = ((@next_hp / @max_hp) * 100).to_i
 
-        @green_bar.image.x = next_bar_len
+        @green_bar.image = Image.new(@next_bar_len, 10, C_GREEN)
 
-        @red_bar.image.x = @curr_bar_len - @next_bar_len
+        @red_bar.image = Image.new(@curr_bar_len - @next_bar_len, 10, C_RED)
 
         @curr_bar_len = @next_bar_len
 
@@ -37,8 +37,8 @@ class HitPoint
     end
 
     def play
-        if 1 < @red_bar.image.x
-            @red_bar.image.x -= 1
+        if 1 < @curr_bar_len - @next_bar_len
+            @red_bar.image = Image.new(@curr_bar_len - 1, 10, C_RED)
             if @direction == 'left'
                 @red_bar.x += 1
             end
