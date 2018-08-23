@@ -1,6 +1,12 @@
 require_relative 'character'
 
 class Ruby < Character
+    def initialize(name="character")
+        @name = "Ruby"
+        @hp = 200
+        @atk = 50
+        getHandsParam
+    end
     def hands
         {
             gu: [1.5, "ルビースマッシュ"],
@@ -9,9 +15,3 @@ class Ruby < Character
         }
     end
 end
-
-# 確認用
-ruby = Ruby.new("Ruby", 100, 10, "正常")
-print ruby.name, "\n"
-print ruby.status, "\n"
-ruby.printHands

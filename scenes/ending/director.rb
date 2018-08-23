@@ -15,9 +15,15 @@ module Ending
       #   'player1' => Image.load(''),
       #   'player2' => Image.load('')
       #}
+      @cnt = false
     end
 
     def play
+      if @cnt == false
+        @cnt = true
+        p "エンディング"
+      end
+
       Window.draw(0, 0, BACKGROUND)
 
       #drawing winner's illust
@@ -30,7 +36,7 @@ module Ending
         Scene.update_player(:player2, nil)
         Scene.add(:title, Title::Director.new)
         Scene.add(:charactor_select, CharactorSelect::Director.new)
-        Scene.add(:game, Game::Director.new)
+        #Scene.add(:game, Game::Director.new)
         Scene.add(:ending, Ending::Director.new)
         Scene.current = :title
       end

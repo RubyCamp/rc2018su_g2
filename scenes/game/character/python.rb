@@ -1,6 +1,13 @@
 require_relative 'character'
 
 class Python < Character
+    def initialize(name="character")
+        @name = "Python"
+        @hp = 20
+        @atk = 80
+        getHandsParam
+    end
+
     def hands
         {
             gu: [1.0,  "パイソニスタ"],
@@ -9,9 +16,3 @@ class Python < Character
         }
     end
 end
-
-# 確認用
-python = Python.new("Pyhton", 100, 10, "異常")
-print python.name, "\n"
-print python.status, "\n"
-python.printHands

@@ -1,6 +1,13 @@
 require_relative 'character'
 
 class Perl < Character
+    def initialize(name="character")
+        @name = "Perl"
+        @hp = 60
+        @atk =40
+        getHandsParam
+    end
+
     def hands
         {
             gu: [1.10, "真珠湾戦争"],
@@ -9,9 +16,3 @@ class Perl < Character
         }
     end
 end
-
-# 確認用
-perl = Perl.new("Perl", 120, 10, "異常")
-print perl.name, "\n"
-print perl.status, "\n"
-perl.printHands
