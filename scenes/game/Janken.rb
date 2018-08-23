@@ -84,4 +84,9 @@ class Janken # 1回ごとのじゃんけんの対戦を扱うクラス
 		@end
 	end
 
+
+	def calcDamage
+		
+	end
+
 end

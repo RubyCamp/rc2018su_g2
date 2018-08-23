@@ -5,6 +5,7 @@ class Player < Sprite
 		@pa = Image.load('images/game/pa.png')
 		@i = 0
 		@chara = selectCharacter(selectedCharacter) # 入力:選ばれたキャラの文字情報. 代入: Characterクラス.
+		#@currentHP = @chara.returnMaxHP
   end
 
 	def selectCharacter(chara) # 呼ばれるときに選択したキャラクター情報代入
