@@ -6,7 +6,7 @@ class Player1_janken < Player
   def initialize(selectedCharacter = "")
 		@gu = Image.load('images/game/gu.png')
 		@ti = Image.load('images/game/ti.png')
-		@pa = Image.load('images/game/pa.png')
+    @pa = Image.load('images/game/pa.png')
     @i = 0
     @chara = nil
 
@@ -17,8 +17,14 @@ class Player1_janken < Player
     @c_gu = @chara.gu
     @c_ti = @chara.ti
     @c_pa = @chara.pa
+    
+    @charaImage = Image.load('images/game/'+@chara.name+'.png')
     #p @chara
 		#@currentHP
+  end
+
+  def showChara
+    Window.draw(50, 100, @charaImage)
   end
 
 	def select(seleChara) # 呼ばれるときに選択したキャラクター情報代入

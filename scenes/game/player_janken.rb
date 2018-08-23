@@ -24,9 +24,12 @@ class Player < Sprite
 	end
 
 	def play #グーチョキパーの画像を選択
-		Window.draw(50, 100, @gu) if @i == 1
-		Window.draw(50, 100, @ti) if @i == 2
-		Window.draw(50, 100, @pa) if @i == 3
+		Window.draw(100, 400, @gu) if @i == 1
+		Window.draw(100, 400, @ti) if @i == 2
+		Window.draw(100, 400, @pa) if @i == 3
+	end
+
+	def showChara
 	end
 
 	

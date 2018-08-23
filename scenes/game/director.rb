@@ -10,6 +10,7 @@ require_relative 'character/python'
 
 module Game
   class Director
+    BACKGROUND = Image.load('images/game/jungle.jpg')
     def initialize
       @janken = Janken.new
       @ending = false
@@ -17,9 +18,11 @@ module Game
     end
 
     def play
+      Window.draw(0, 0, BACKGROUND)
       if @janken.end?
         # 終了条件満たしていても、結果は表示
         @janken.showHands
+        @janken.showChara
         
         # どっちかがHPゼロになったらエンディングへ
         if @janken.p1.hp <= 0 || @janken.p2.hp <= 0

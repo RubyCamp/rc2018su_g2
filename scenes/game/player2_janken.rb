@@ -16,7 +16,9 @@ class Player2_janken < Player #classの名前を持たせる
     	@atk = @chara.atk
     	@c_gu = @chara.gu
     	@c_ti = @chara.ti
-    	@c_pa = @chara.pa
+		@c_pa = @chara.pa
+		
+		@charaImage = Image.load('images/game/'+@chara.name+'.png')
   	end
 
 	def select(seleChara) # 呼ばれるときに選択したキャラクター情報代入
@@ -36,9 +38,13 @@ class Player2_janken < Player #classの名前を持たせる
 		@hp = @chara.hp
 	end
 
+	def showChara
+		Window.draw(450, 100, @charaImage)
+	end
+
 	def play #継承したメソッド
-		Window.draw(350, 100, @gu) if @i == 1
-		Window.draw(350, 100, @ti) if @i == 2
-		Window.draw(350, 100, @pa) if @i == 3
+		Window.draw(500, 400, @gu) if @i == 1
+		Window.draw(500, 400, @ti) if @i == 2
+		Window.draw(500, 400, @pa) if @i == 3
  	end
 end

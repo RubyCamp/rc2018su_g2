@@ -49,9 +49,11 @@ class Janken # 1回ごとのじゃんけんの対戦を扱うクラス
 		# 勝利判定
 		judge
 		# 表示
+		showChara
 		#showHands
 		if @p1.push_key != 0 && @p2.push_key == 0
 			showHands
+			showChara
 		end
 		
 		timeLimit
@@ -73,13 +75,17 @@ class Janken # 1回ごとのじゃんけんの対戦を扱うクラス
 		@winner = 0
 		@winner_hand = 0
 		@cnt = 0
-
 		####################
 	end
 
 	def showHands # 出す手のみを表示するメソッド（キャラは別で定義したほうがよい?）
 		@p1.play
 		@p2.play
+	end
+
+	def showChara
+		@p1.showChara
+		@p2.showChara
 	end
 
 	def judge
@@ -145,7 +151,6 @@ class Janken # 1回ごとのじゃんけんの対戦を扱うクラス
 			end
 			p "p2"
 			p @p2.hp
-			sleep(0.5)
 
 		elsif winner == 2 #p2が勝利なら
 			if winner_hand == 1 # グーなら
@@ -160,7 +165,6 @@ class Janken # 1回ごとのじゃんけんの対戦を扱うクラス
 			end
 			p "p1"
 			p @p1.hp
-			sleep(0.5)
 		end
 	end
 
