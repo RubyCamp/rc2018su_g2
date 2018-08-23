@@ -2,8 +2,8 @@
 
 module Ending
   class Director
-    BACKGROUND = Image.load('mountain2.jpg') #set background
-    BGM = Sound.new('') #set BGM
+    BACKGROUND = Image.load('mountain2_re.jpg')
+    #BGM = Sound.new('') #set BGM
 
     def initialize
       @player_images = {
@@ -22,9 +22,9 @@ module Ending
         Scene.current = :title #continue
       end
 
-    def change_bgm
-      Scene[:title].class::BGM.stop
-      BGM.play
-    end
+    #def change_bgm
+      #Scene[:title].class::BGM.stop
+      #BGM.play
+    #end
   end
 end
