@@ -1,17 +1,21 @@
 class Player < Sprite
+  attr_reader :hp
   def initialize(selectedCharacter = '')
 		@gu = Image.load('images/game/gu.png')
 		@ti = Image.load('images/game/ti.png')
 		@pa = Image.load('images/game/pa.png')
 		@i = 0
-		@chara = selectCharacter(selectedCharacter) # 入力:選ばれたキャラの文字情報. 代入: Characterクラス.
+    @hp = 0
+		@chara = selectChara(selectedCharacter) # 入力:選ばれたキャラの文字情報. 代入: Characterクラス.
+
   end
 
-	def selectCharacter(chara) # 呼ばれるときに選択したキャラクター情報代入
-		chara = Ruby.new("Ruby", 120, 10, "正常") if @character == 'Ruby'; p 'Ruby Selected.' 
-		chara = Python.new("Python", 100, 10, "正常") if @character == 'Python'; p 'Pyhton Selected'
-		chara = Perl.new("Perl", 100, 10, "正常") if @character == 'Perl'; 'Perl Selected'
-		chara
+	def selectChara(chara) # 呼ばれるときに選択したキャラクター情報代入
+		chara = Ruby.new("Ruby") if @chara == 'Ruby' ; p 'Ruby Selected.'
+		chara = Python.new("Python") if @chara == 'Python'; p 'Pyhton Selected'
+		chara = Perl.new("Perl") if @chara == 'Perl'; 'Perl Selected'
+    set_hp
+    chara
 	end
 
 	def push_key #グーチョキパーのデータを取る
@@ -27,13 +31,17 @@ class Player < Sprite
 		Window.draw(50, 100, @pa) if @i == 3
 	end
 
-	
+
 	private
+  def set_hp
+    @hp = @chara.hp
+  end
+
   def keys #hash
     {
-      gu:K_LEFT, #カンマ忘れない
-      ti:K_UP,
-      pa:K_RIGHT
+      gu:K_J, #カンマ忘れない
+      ti:K_I,
+      pa:K_L
     }
   end
 end

@@ -1,11 +1,16 @@
 class Character
-    def initialize(name="character", hp=100, atk=1, status="正常")
+    attr_reader :hp
+    def initialize(name="character")
         @name = name
-        @hp = hp
-        @atk = atk
-        @status = status
+        @hp = 100
+        @atk = 20
+        @status = "正常"
         getHandsParam
         print "initialized!\n"
+    end
+
+    def hp
+      @hp
     end
 
     def getHandsParam # ジャンケンの手ごとのパラメータを初期化
@@ -21,7 +26,7 @@ class Character
             pa: [1.0, "パー！"]
         }
     end
-    
+
     def printHands #確認用.
         print @gu[0],", ",@gu[1],"\n"
         print @ti[0],", ",@ti[1],"\n"
