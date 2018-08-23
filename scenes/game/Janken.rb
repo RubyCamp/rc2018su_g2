@@ -63,7 +63,6 @@ class Janken # 1回ごとのじゃんけんの対戦を扱うクラス
 	end
 
 	def reset
-		p "------------------->8-------------------"
 		#p @p1.hp
 		@p1_HP = @p1.hp
 		@p2_HP = @p2.hp
@@ -100,20 +99,28 @@ class Janken # 1回ごとのじゃんけんの対戦を扱うクラス
 		if @p1.push_key != 0 && @p2.push_key != 0
 			@end = true # 1回あたりのじゃんけん終了条件はクリア
 			if var == -1 || var == 2
-				puts "P1の勝ちです"
+				#puts "P1の勝ちです"
 				@winner = 1
 				@winner_hand = @p1.push_key
+				p1Damaged
 				currentHP(@winner, @winner_hand)
 			elsif var == 1 || var == -2
-				puts "P2の勝ちです"
+				#puts "P2の勝ちです"
 				@winner = 2
 				@winner_hand = @p2.push_key
+				p2Damaged
 				currentHP(@winner, @winner_hand)
 			elsif var == 0
-				puts "あいこです"
+				#puts "あいこです"
 			end
 			p "------------------->8-------------------"
 		end
+	end
+
+	def p1Damaged
+	end
+
+	def p2Damaged
 	end
 
 	def timeLimit
