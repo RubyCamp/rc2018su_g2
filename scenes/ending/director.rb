@@ -1,18 +1,29 @@
 module Ending
   class Director
-    #BACKGROUND = Image.load('images/background_ending.png')
-    #BGM = Sound.new('sound/bgm_ending.wav')
+    BACKGROUND = Image.load('images/ending/mountain2_re.jpg')
+    #BGM = Sound.new('') #set BGM
+
     def initialize
-      @ending = false
+      #@player_images = {
+      #   'player1' => Image.load(''),
+      #   'player2' => Image.load('')
+      #}
     end
 
     def play
-      #Window.draw(0, 0, BACKGROUND)
-      if @ending == false
-        @ending = true
-        print "エンディング\n"
+      Window.draw(0, 0, BACKGROUND)
+
+      #drawing winner's illust
+      #winner = ...
+      #img = @player_images[winner]
+      if Input.key_push?(K_C) then
+        Scene.current = :title #continue
       end
-      #Scene.current = :game if Input.key_push?(K_SPACE)
     end
+
+    #def change_bgm
+      #Scene[:title].class::BGM.stop
+      #BGM.play
+    #end
   end
 end
