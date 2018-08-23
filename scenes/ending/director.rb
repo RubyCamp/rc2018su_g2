@@ -26,7 +26,8 @@ module Ending
       end
 
       Window.draw(0, 0, BACKGROUND)
-
+      Window.draw_font(165, 300, Scene.winner(:winner), Font.new(150, font_name="ＭＳ ゴシック"), option={:color => [0, 0, 0]})
+      Window.draw_font(160, 300, Scene.winner(:winner), Font.new(150, font_name="ＭＳ ゴシック"))
       #drawing winner's illust
       #winner = ...
       #img = @player_images[winner]
