@@ -1,7 +1,7 @@
 require_relative "player1_janken"
 require_relative 'player2_janken'
 
-class Janken　# 1回ごとのじゃんけんの対戦を扱うクラス
+class Janken # 1回ごとのじゃんけんの対戦を扱うクラス
 	def initialize # ここで、キャラ選択画面シーンから、選択したキャラの情報が入力される
 		@p1 = Player1_janken.new('Ruby') # ここでは、P1がRuby選択されたと仮定
 		@p2 = Player2_janken.new('Python') # ここでは、P2がPython選択されたと仮定
@@ -83,4 +83,5 @@ class Janken　# 1回ごとのじゃんけんの対戦を扱うクラス
 	def end?
 		@end
 	end
+
 end
