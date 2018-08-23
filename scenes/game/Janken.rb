@@ -33,6 +33,7 @@ class Janken # 1回ごとのじゃんけんの対戦を扱うクラス
 		@end = false
 		@timer = 0
 		@counter = Counter.new(370, 20, 75)
+		@commet_font = Font.new(30, font_name="ＭＳ ゴシック")
 	end
 
 	def run
@@ -115,13 +116,15 @@ class Janken # 1回ごとのじゃんけんの対戦を扱うクラス
 				#puts "P1の勝ちです"
 				@winner = 1
 				@winner_hand = @p1.push_key
-				p1Damaged
+				comment(@winner, @winner_hand)
+				visualComment
 				currentHP(@winner, @winner_hand)
 			elsif var == 1 || var == -2
 				#puts "P2の勝ちです"
 				@winner = 2
 				@winner_hand = @p2.push_key
-				p2Damaged
+				comment(@winner, @winner_hand)
+				visualComment
 				currentHP(@winner, @winner_hand)
 			elsif var == 0
 				#puts "あいこです"
@@ -136,6 +139,31 @@ class Janken # 1回ごとのじゃんけんの対戦を扱うクラス
 	def p2Damaged
 	end
 
+	def comment(winner,winner_hand)
+		if winner == 1
+			if winner_hand == 1
+				@font = @p1.c_gu[1] + "が炸裂！"
+			elsif winner_hand == 2
+				@font = @p1.c_ti[1] + "は効果抜群だ！"
+			elsif winner_hand == 3
+				@font = @p1.c_pa[1] + "を当てていく！"
+			end
+		elsif winner == 2
+			if @winner_hand == 1
+				@font = @p2.c_gu[1] + "が炸裂！"
+			elsif @winner_hand == 2
+				@font = @p2.c_ti[1] + "は効果抜群だ！"
+			elsif @winner_hand == 3
+				@font = @p2.c_pa[1] + "を当てていく！"
+			end
+		end
+	end
+
+
+	def visualComment
+		Window.draw_font(230,570,@font,@commet_font)
+	end
+
 	def timeLimit
 		# 時間制限にかかる終了条件
 		if @timer > 600
@@ -143,9 +171,15 @@ class Janken # 1回ごとのじゃんけんの対戦を扱うクラス
 			if @p1.push_key != 0 && @p2.push_key == 0
 				@winner = 1
 				@winner_hand = @p1.push_key
+				comment(@winner, @winner_hand)
+				visualComment
+				currentHP(@winner, @winner_hand)
 			elsif @p1.push_key == 0 && @p2.push_key != 0
 				@winner = 2
 				@winner_hand = @p2.push_key
+				comment(@winner, @winner_hand)
+				visualComment
+				currentHP(@winner, @winner_hand)
 			elsif @p1.push_key == 0 && @p2.push_key == 0
 				@winner = 0
 				@winner_hand = 0

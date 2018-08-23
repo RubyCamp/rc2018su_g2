@@ -28,10 +28,10 @@ module Game
         @janken.showChara
         @janken.showHPBar
         @janken.showHP
-        sleep(0.5)
         
         # どっちかがHPゼロになったらエンディングへ
         if @janken.p1.hp <= 0 || @janken.p2.hp <= 0
+          sleep(0.5)
           @ending = true
          
           if @janken.winner == 1
@@ -47,11 +47,13 @@ module Game
         #else
         #  play # 終わりじゃなければ、第2回戦、第3回戦...へ。
         else
+          sleep(2.0)
           @janken.end = false # エンディングじゃなければ、もう1回戦。
           @janken.reset # エンディングじゃなければ、もう1回戦。
         end
 
       else
+
         @janken.run
       end
     end
