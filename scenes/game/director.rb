@@ -20,11 +20,15 @@ module Game
       if @janken.end?
         # 終了条件満たしていても、結果は表示
         @janken.showHands
-        
+
         # どっちかがHPゼロになったらエンディングへ
         if @janken.p1.hp <= 0 || @janken.p2.hp <= 0
           @ending = true
-          Scene.current = :ending if Input.key_push?(K_SPACE)
+          if Input.key_push?(K_SPACE) then
+            Scene.add(:ending, Ending::Director.new)
+            Scene.current = :ending
+          end
+          #Scene.current = :ending if Input.key_push?(K_SPACE)
         #else
         #  play # 終わりじゃなければ、第2回戦、第3回戦...へ。
         else
@@ -38,4 +42,3 @@ module Game
     end
   end
 end
-

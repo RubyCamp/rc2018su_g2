@@ -8,7 +8,7 @@
 module Ending
   class Director
     BACKGROUND = Image.load('images/ending/mountain2_re.jpg')
-    #BGM = Sound.new('') #set BGM
+    BGM = Sound.new('sound/ending/winner_bgm.wav')
 
     def initialize
       #@player_images = {
@@ -16,6 +16,7 @@ module Ending
       #   'player2' => Image.load('')
       #}
       @cnt = false
+      BGM.play
     end
 
     def play
@@ -32,12 +33,13 @@ module Ending
       if Input.key_push?(K_C) then
         #Cを押すとタイトル画面に遷移
         #その際に初期化（新たにシーンを作成）
+        BGM.stop
         Scene.update_player(:player1, nil)
         Scene.update_player(:player2, nil)
         Scene.add(:title, Title::Director.new)
-        Scene.add(:charactor_select, CharactorSelect::Director.new)
+        #Scene.add(:charactor_select, CharactorSelect::Director.new)
         #Scene.add(:game, Game::Director.new)
-        Scene.add(:ending, Ending::Director.new)
+        #Scene.add(:ending, Ending::Director.new)
         Scene.current = :title
       end
     end
