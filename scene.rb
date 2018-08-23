@@ -2,9 +2,9 @@ class Scene
   @@current = nil
   @@scene_directors = {}
 
-  ERRORS = {
-    no_current: 'カレントシーンがセットされていません。set_current(director_name)を実行してください',
-    director_not_found: '指定されたディレクター名が見つかりませんでした'
+  @@players = {
+    :player1 => nil,
+    :player2 => nil
   }
 
   def self.add(director_name, director_obj)

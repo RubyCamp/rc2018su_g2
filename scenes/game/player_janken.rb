@@ -5,9 +5,14 @@ class Player < Sprite
 		@ti = Image.load('images/game/ti.png')
 		@pa = Image.load('images/game/pa.png')
 		@i = 0
+<<<<<<< HEAD
     @hp = 0
 		@chara = selectChara(selectedCharacter) # 入力:選ばれたキャラの文字情報. 代入: Characterクラス.
 
+=======
+		@chara = selectCharacter(selectedCharacter) # 入力:選ばれたキャラの文字情報. 代入: Characterクラス.
+		#@currentHP = @chara.returnMaxHP
+>>>>>>> 68480a1755bbb3fe0632e8515feec8e804607a7a
   end
 
 	def selectChara(chara) # 呼ばれるときに選択したキャラクター情報代入

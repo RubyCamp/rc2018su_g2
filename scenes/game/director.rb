@@ -7,7 +7,12 @@ require_relative 'player2_janken'
 module Game
   class Director
     def initialize
+<<<<<<< HEAD
       @janken = ::Janken.new
+=======
+      @janken = Janken.new
+      @ending = false
+>>>>>>> 68480a1755bbb3fe0632e8515feec8e804607a7a
     end
 
     def play
