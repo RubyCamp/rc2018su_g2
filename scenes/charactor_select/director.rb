@@ -82,7 +82,8 @@ module CharactorSelect
             if Scene.players(:player1) != nil && Scene.players(:player2) != nil && Input.key_push?(K_SPACE)
                 @sound.play
                 @bgm.stop
-                Scene.current = :game
+                Scene.add(:show_charactor, ShowCharactor::Director.new)
+                Scene.current = :show_charactor
             end
         end
     end
