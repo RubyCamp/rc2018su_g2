@@ -66,17 +66,17 @@ module CharactorSelect
                     @font_alpha += 1
                 end
             end
-            Window.draw_font(165, 550, "PUSH SPACE KEY TO START", @next_font, option={:alpha => @font_alpha}) if Scene.players(:player1) != nil && Scene.players(:player2) != nil
+            Window.draw_font(165, 525, "PUSH SPACE KEY TO START", @next_font, option={:alpha => @font_alpha}) if Scene.players(:player1) != nil && Scene.players(:player2) != nil
             @font_alpha -= 1 if @font_alpha == 0
 
             player1 = Scene.players(:player1).to_s.center(6)
             player2 = Scene.players(:player2).to_s.center(6)
             list = "<%s>P1 VS P2<%s>" % [player1, player2]
-            @selected_font_y -= 5 if 450 <= @selected_font_y
+            @selected_font_y -= 5 if 450 < @selected_font_y
             Window.draw_font(95, @selected_font_y, list, @selected_font)
 
             Sprite.update(@@cards)
-            Sprite.update(@players)
+            Sprite.update(@players) if @selected_font_y == 450
             
             #スペースキーでゲーム開始
             if Scene.players(:player1) != nil && Scene.players(:player2) != nil && Input.key_push?(K_SPACE)
