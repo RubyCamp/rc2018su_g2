@@ -9,6 +9,7 @@ class Player1_janken < Player
     @pa = Image.load('images/game/pa.png')
     @i = 0
     @chara = nil
+    @font = Font.new(40, font_name="ＭＳ ゴシック")
 
     #p selectedCharacter
     select(selectedCharacter) # 入力:選ばれたキャラの文字情報. 代入: Characterクラス.
@@ -25,6 +26,10 @@ class Player1_janken < Player
 
   def showChara
     Window.draw(50, 100, @charaImage)
+  end
+
+  def showHP
+    Window.draw_font(100, 20, @hp.to_s, @font)
   end
 
 	def select(seleChara) # 呼ばれるときに選択したキャラクター情報代入

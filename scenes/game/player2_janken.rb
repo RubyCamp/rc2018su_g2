@@ -16,8 +16,9 @@ class Player2_janken < Player #classの名前を持たせる
     	@c_gu = @chara.gu
     	@c_ti = @chara.ti
 		@c_pa = @chara.pa
-		@hitpoint = HitPoint.new(400, 10, @chara.hp, 'right')		
+		@hitpoint = HitPoint.new(500, 10, @chara.hp, 'right')		
 		@charaImage = Image.load('images/game/'+@chara.name+'.png')
+		@font = Font.new(40, font_name="ＭＳ ゴシック")
   	end
 
 	def select(seleChara) # 呼ばれるときに選択したキャラクター情報代入
@@ -39,6 +40,10 @@ class Player2_janken < Player #classの名前を持たせる
 
 	def showChara
 		Window.draw(450, 100, @charaImage)
+	end
+
+	def showHP
+		Window.draw_font(600, 20, @hp.to_s, @font)
 	end
 
 	def play #継承したメソッド

@@ -27,6 +27,7 @@ module Game
         @janken.showHands
         @janken.showChara
         @janken.showHPBar
+        @janken.showHP
         sleep(0.5)
         
         # どっちかがHPゼロになったらエンディングへ

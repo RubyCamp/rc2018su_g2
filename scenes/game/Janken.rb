@@ -14,8 +14,10 @@ class Janken # 1回ごとのじゃんけんの対戦を扱うクラス
 		#p @p2.select
 		p "P1's HP:"
 		p @p1.hp
+		@p1_maxHP = @p1.hp
 		p "p1 atk: "
 		p @p1.atk
+		@p2_maxHP = @p2.hp
 		#p "P1 maxHP:",@p1.hp
 		p "P2's HP:" 
 		p @p2.hp
@@ -49,7 +51,7 @@ class Janken # 1回ごとのじゃんけんの対戦を扱うクラス
 		#	p (@limit-@t)
 		#end
 		showHPBar
-		
+		showHP
 		# 勝利判定
 		judge
 		# 表示
@@ -95,6 +97,11 @@ class Janken # 1回ごとのじゃんけんの対戦を扱うクラス
 	def showHPBar
 		@p1.hitpoint.play
 		@p2.hitpoint.play
+	end
+
+	def showHP
+		@p1.showHP
+		@p2.showHP
 	end
 
 	def judge
