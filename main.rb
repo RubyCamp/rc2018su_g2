@@ -11,6 +11,10 @@ Window.height = 600
 
 Scene.add(:title, Title::Director.new)
 #Scene.add(:game, Game::Director.new)
+
+#Endingのdirector.rbのinitializeにBGM追加と
+#gameのdirector.rbにScene.addを追加後、
+#下のScene.addを削除
 Scene.add(:ending, Ending::Director.new)
 
 Scene.current = :title
