@@ -13,7 +13,7 @@ module Game
   class Director
     BACKGROUND = Image.load('images/game/jungle.jpg')
     def initialize
-      @counter = Counter.new(350, 20, 75)
+      @counter = Counter.new(380, 20, 75)
       @janken = Janken.new
       @ending = false
       @cnt = 0
