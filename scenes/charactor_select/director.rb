@@ -25,9 +25,9 @@ module CharactorSelect
 
             #キャラクターカードの生成
             @@cards = []
-            @@cards << CharactorSelect::CharactorIcon.new(-100, -150, RUBY_ICON, "Ruby")
-            @@cards << CharactorSelect::CharactorIcon.new(100, -150, PYTHON_ICON, "Python")
-            @@cards << CharactorSelect::CharactorIcon.new(300, -150, PERL_ICON, "Perl")
+            @@cards << CharactorSelect::CharactorIcon.new(500, -150, RUBY_ICON, "Ruby")
+            @@cards << CharactorSelect::CharactorIcon.new(500, -150, PYTHON_ICON, "Python")
+            @@cards << CharactorSelect::CharactorIcon.new(500, -150, PERL_ICON, "Perl")
 		
             # プレイヤーの生成
             @players = []
@@ -49,6 +49,10 @@ module CharactorSelect
 
         def play
             Window.draw_font(95, 20, "キャラクター選択", @title_font)
+
+            @@cards[0].x -= 5 if -100 <= @@cards[0].x
+            @@cards[1].x -= 5 if 100 <= @@cards[1].x
+            @@cards[2].x -= 5 if 300 <= @@cards[2].x
             
             #両プレイヤーがキャラクター選択時、"push space to start"を点滅させる
             if @alpha_flag
