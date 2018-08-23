@@ -1,8 +1,9 @@
 require_relative "player1_janken"
-require_relative 'player2_janken'
+require_relative "player2_janken"
+require_relative "counter"
 
 class Janken # 1回ごとのじゃんけんの対戦を扱うクラス
-	attr_reader :p1, :p2, :winner
+	attr_reader :p1, :p2, :winner, :counter
 	attr_accessor :end
 	def initialize # ここで、キャラ選択画面シーンから、選択したキャラの情報が入力される
 		@p1 = Player1_janken.new(Scene.players(:player1)) # ここでは、P1がRuby選択されたと仮定
@@ -29,10 +30,12 @@ class Janken # 1回ごとのじゃんけんの対戦を扱うクラス
 		@cnt = 0
 		@end = false
 		@timer = 0
+		@counter = Counter.new(370, 20, 75)
 	end
 
 	def run
 		@timer += 1
+		@counter.showCnt
 		# 時間取得
 		#@t = Time.now
 		#p @t # 確認用
@@ -71,6 +74,7 @@ class Janken # 1回ごとのじゃんけんの対戦を扱うクラス
 		@p1.hp = @p1_HP
 		@p2.hp = @p2_HP
 		####################
+		@counter = Counter.new(370, 20, 75)
 		@var = 0
 		@winner = 0
 		@winner_hand = 0
@@ -119,7 +123,6 @@ class Janken # 1回ごとのじゃんけんの対戦を扱うクラス
 			if @p1.push_key != 0 && @p2.push_key == 0
 				@winner = 1
 				@winner_hand = @p1.push_key
-				currentHP
 			elsif @p1.push_key == 0 && @p2.push_key != 0
 				@winner = 2
 				@winner_hand = @p2.push_key
@@ -137,7 +140,9 @@ class Janken # 1回ごとのじゃんけんの対戦を扱うクラス
 
 
 	def currentHP(winner, winner_hand)
+		p "Player1:"
 		p @p1.hp
+		p "Player2:"
 		p @p2.hp
 		if winner == 1 #p1が勝利なら
 			if winner_hand == 1 # グーなら

@@ -9,7 +9,7 @@ class Counter
 
     def showCnt
         @cnt = (@cnt + 1) % 60
-        @limit -= 1 if @cnt == 0 && 0 <= @limit
+        @limit -= 1 if @cnt == 0 && 0 < @limit
         Window.draw_font(@x, @y, @limit.to_s.rjust(2), @font)
     end
 

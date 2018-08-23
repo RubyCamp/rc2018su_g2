@@ -10,7 +10,7 @@ class Player2_janken < Player #classの名前を持たせる
 		@i = 0
 		@chara = nil
 
-		p selectedCharacter
+		#p selectedCharacter
 		select(selectedCharacter)
 		@hp = @chara.hp
     	@atk = @chara.atk
@@ -24,13 +24,13 @@ class Player2_janken < Player #classの名前を持たせる
 	def select(seleChara) # 呼ばれるときに選択したキャラクター情報代入
 		if seleChara == 'Ruby'
 			@chara = Ruby.new("Ruby")
-			p 'Ruby Selected.' 
+			#p 'Ruby Selected.' 
 		elsif seleChara == 'Python'
 			@chara = Python.new("Python") 
-			p 'Python Selected'
+			#p 'Python Selected'
 		elsif seleChara == 'Perl'
 			@chara = Perl.new("Perl")
-			p 'Perl Selected'
+			#p 'Perl Selected'
 		end
 	end
 
