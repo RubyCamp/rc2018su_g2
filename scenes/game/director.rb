@@ -37,7 +37,8 @@ module Game
             Scene.update_winner(:winner, "Player1")
           elsif @janken.winner == 2
             Scene.update_winner(:chara, @janken.p2.chara.name)
-            Scene.update_winner(:winner, "Player1") 
+            Scene.update_winner(:winner, "Player2") 
+          else
           end
 
           Scene.current = :ending if Input.key_push?(K_SPACE)
