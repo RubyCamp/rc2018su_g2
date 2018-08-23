@@ -1,6 +1,8 @@
 class Counter
-    def initialize
-        @font = Font.new(75, font_name="ＭＳ ゴシック")
+    def initialize(x, y, size)
+        @x = x
+        @y = y
+        @font = Font.new(size, font_name="ＭＳ ゴシック")
         @limit = 10
         @cnt = 0
     end
@@ -8,7 +10,7 @@ class Counter
     def showCnt
         @cnt = (@cnt + 1) % 60
         @limit -= 1 if @cnt == 0 && 0 <= @limit
-        Window.draw_font(300, 20, @limit.to_s, @font)
+        Window.draw_font(@x, @y, @limit.to_s.rjust(2), @font)
     end
 
     def resetCnt
